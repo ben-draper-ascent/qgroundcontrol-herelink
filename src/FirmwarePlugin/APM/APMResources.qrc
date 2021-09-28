@@ -20,6 +20,8 @@
         <file alias="APMNotSupported.qml">../../AutoPilotPlugins/APM/APMNotSupported.qml</file>
         <file alias="APMPowerComponent.qml">../../AutoPilotPlugins/APM/APMPowerComponent.qml</file>
         <file alias="APMPowerComponentSummary.qml">../../AutoPilotPlugins/APM/APMPowerComponentSummary.qml</file>
+        <file alias="APMSpiritComponent.qml">../../AutoPilotPlugins/APM/APMSpiritComponent.qml</file>
+        <file alias="APMSpiritComponentSummary.qml">../../AutoPilotPlugins/APM/APMSpiritComponentSummary.qml</file>
         <file alias="APMRadioComponentSummary.qml">../../AutoPilotPlugins/APM/APMRadioComponentSummary.qml</file>
         <file alias="APMSafetyComponent.qml">../../AutoPilotPlugins/APM/APMSafetyComponent.qml</file>
         <file alias="APMSafetyComponentSub.qml">../../AutoPilotPlugins/APM/APMSafetyComponentSub.qml</file>
@@ -50,6 +52,7 @@
         <file alias="APMParameterFactMetaData.Copter.3.6.xml">APMParameterFactMetaData.Copter.3.6.xml</file>
         <file alias="APMParameterFactMetaData.Copter.3.7.xml">APMParameterFactMetaData.Copter.3.7.xml</file>
         <file alias="APMParameterFactMetaData.Copter.4.0.xml">APMParameterFactMetaData.Copter.4.0.xml</file>
+        <file alias="APMParameterFactMetaData.Copter.4.1.xml">APMParameterFactMetaData.Copter.4.1.xml</file>
         <file alias="APMParameterFactMetaData.Rover.3.4.xml">APMParameterFactMetaData.Rover.3.4.xml</file>
         <file alias="APMParameterFactMetaData.Rover.3.5.xml">APMParameterFactMetaData.Rover.3.5.xml</file>
         <file alias="APMParameterFactMetaData.Rover.3.6.xml">APMParameterFactMetaData.Rover.3.6.xml</file>
