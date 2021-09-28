@@ -13,75 +13,114 @@ import QtQml.Models                 2.1
 
 import QGroundControl               1.0
 import QGroundControl.ScreenTools   1.0
+import QGroundControl.FactSystem    1.0
+import QGroundControl.FactControls  1.0
 import QGroundControl.Controls      1.0
 import QGroundControl.FlightDisplay 1.0
 import QGroundControl.Vehicle       1.0
 
 Item {
+    id: checklistItem
     property var model: listModel
+
     PreFlightCheckModel {
         id:     listModel
         PreFlightCheckGroup {
-            name: qsTr("Multirotor Initial Checks")
+            name: qsTr("Setup checklist")
 
             PreFlightCheckButton {
-                name:           qsTr("Hardware")
-                manualText:     qsTr("Props mounted and secured?")
+                name:           qsTr("INSPECT")
+                manualText:     qsTr("All modules and payloads secured and fully mated")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("VERIFY")
+                manualText:     qsTr("Propeller blades clocked to prevent hang-up")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("RECOMMENDED")
+                manualText:     qsTr("LEDs facing pilot")
+            }
+        }
+
+        PreFlightCheckGroup {
+            name: qsTr("Configuration checklist")
+
+            PreFlightCheckButton {
+                name:            qsTr("VERIFY")
+                manualText:      qsTr("Spirit configuration settings are accurate (see configuration screen)")
+            }
+
+            PreFlightCheckButton {
+                name:            qsTr("VERIFY")
+                manualText:      qsTr("ONE battery mounted on top")
+            }
+        }
+
+        PreFlightCheckGroup {
+            name: qsTr("Mission checklist")
+
+            PreFlightCheckButton {
+                name:           qsTr("VERIFY")
+                manualText:     qsTr("Wind and weather within limits")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("CHECK")
+                manualText:     qsTr("Geofence settings")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("CHECK")
+                manualText:     qsTr("RTL settings")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("CHECK")
+                manualText:     qsTr("Mission waypoints and altitudes set correctly")
+            }
+
+        }
+
+
+        PreFlightCheckGroup {
+            name: qsTr("Takeoff checklist")
+
+            PreFlightCheckButton {
+                name:           qsTr("VERIFY")
+                manualText:     qsTr("LEDS flashing green")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("VERIFY")
+                manualText:     qsTr("Reported heading is correct")
+            }
+
+            PreFlightCheckButton {
+                name:           qsTr("VERIFY")
+                manualText:     qsTr("HereLink controller charged")
+            }
+        
+            PreFlightCheckButton {
+                name:           qsTr("CHECK")
+                manualText:     qsTr("Current flight mode")
             }
 
             PreFlightBatteryCheck {
-                failurePercent:                 40
-                allowFailurePercentOverride:    false
+                failureVoltage:                 43
+                allowFailureVoltageOverride:    false
             }
 
             PreFlightSensorsHealthCheck {
             }
 
             PreFlightGPSCheck {
-                failureSatCount:        9
+                failureSatCount:       6
                 allowOverrideSatCount:  true
-            }
-
-            PreFlightRCCheck {
-            }
-        }
-
-        PreFlightCheckGroup {
-            name: qsTr("Please arm the vehicle here")
-
-            PreFlightCheckButton {
-                name:            qsTr("Motors")
-                manualText:      qsTr("Propellers free? Then throttle up gently. Working properly?")
-            }
-
-            PreFlightCheckButton {
-                name:           qsTr("Mission")
-                manualText:     qsTr("Please confirm mission is valid (waypoints valid, no terrain collision).")
-            }
-
-            PreFlightSoundCheck {
-            }
-        }
-
-        PreFlightCheckGroup {
-            name: qsTr("Last preparations before launch")
-
-            // Check list item group 2 - Final checks before launch
-            PreFlightCheckButton {
-                name:           qsTr("Payload")
-                manualText:     qsTr("Configured and started? Payload lid closed?")
-            }
-
-            PreFlightCheckButton {
-                name:           qsTr("Wind & weather")
-                manualText:     qsTr("OK for your platform?")
-            }
-
-            PreFlightCheckButton {
-                name:           qsTr("Flight area")
-                manualText:     qsTr("Launch area and path free of obstacles/people?")
             }
         }
     }
 }
+
 
