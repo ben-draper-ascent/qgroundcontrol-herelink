@@ -117,7 +117,7 @@ Item {
     }
 
     function showPreflightChecklistIfNeeded () {
-        if (activeVehicle && !_checklistComplete && _enforceChecklist) {
+        if (activeVehicle && !vehicleArmed && !_checklistComplete && _enforceChecklist) {
             checklistPopupTimer.restart()
         }
     }
