@@ -1572,7 +1572,7 @@ bool Vehicle::_apmArmingNotRequired()
             _parameterManager->getParameter(FactSystem::defaultComponentId, armingRequireParam)->rawValue().toInt() == 0;
 }
 
-void Vehicle::_batteryStatusWorker(int batteryId, double voltage, double current, double batteryRemainingPct)
+void Vehicle::_batteryStatusWorker(int batteryId, double voltage, double current)
 {
     VehicleBatteryFactGroup* pBatteryFactGroup = nullptr;
     if (batteryId == 0) {
@@ -1582,6 +1582,8 @@ void Vehicle::_batteryStatusWorker(int batteryId, double voltage, double current
     } else {
         return;
     }
+
+    double batteryRemainingPct = 100.0*(voltage-34)/20;
 
     pBatteryFactGroup->voltage()->setRawValue(voltage);
     pBatteryFactGroup->current()->setRawValue(current);
@@ -1636,8 +1638,7 @@ void Vehicle::_handleSysStatus(mavlink_message_t& message)
     // BATTERY_STATUS is currently unreliable on PX4 stack so we rely on SYS_STATUS for partial battery 0 information to work around it
     _batteryStatusWorker(0 /* batteryId */,
                          sysStatus.voltage_battery == UINT16_MAX ? qQNaN() : static_cast<double>(sysStatus.voltage_battery) / 1000.0,
-                         sysStatus.current_battery == -1 ? qQNaN() : static_cast<double>(sysStatus.current_battery) / 100.0,
-                         sysStatus.battery_remaining == -1 ? qQNaN() : sysStatus.battery_remaining);
+                         sysStatus.current_battery == -1 ? qQNaN() : static_cast<double>(sysStatus.current_battery) / 100.0);
 }
 
 void Vehicle::_handleBatteryStatus(mavlink_message_t& message)
@@ -1676,8 +1677,7 @@ void Vehicle::_handleBatteryStatus(mavlink_message_t& message)
     if (bat_status.id != 0) {
         _batteryStatusWorker(bat_status.id,
                              voltage,
-                             bat_status.current_battery == -1 ? qQNaN() : (double)bat_status.current_battery / 100.0,
-                             bat_status.battery_remaining == -1 ? qQNaN() : bat_status.battery_remaining);
+                             bat_status.current_battery == -1 ? qQNaN() : (double)bat_status.current_battery / 100.0);
     }
 }
 
