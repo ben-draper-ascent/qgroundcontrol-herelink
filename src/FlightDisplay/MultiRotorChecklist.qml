@@ -29,18 +29,18 @@ Item {
             name: qsTr("Setup checklist")
 
             PreFlightCheckButton {
-                name:           qsTr("INSPECT")
-                manualText:     qsTr("All modules and payloads secured and fully mated")
+                name:           qsTr("INSPECT ASSEMBLY")
+                manualText:     qsTr("All modules and payloads secured and click rings fully mated")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("VERIFY")
-                manualText:     qsTr("Propeller blades clocked to prevent hang-up")
+                name:           qsTr("VERIFY PROPELLERS")
+                manualText:     qsTr("Blades clocked to prevent hang-up")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("RECOMMENDED")
-                manualText:     qsTr("LEDs facing pilot")
+                name:           qsTr("ORIENT VEHICLE")
+                manualText:     qsTr("Orient vehicle so LEDs face the pilot")
             }
         }
 
@@ -48,13 +48,13 @@ Item {
             name: qsTr("Configuration checklist")
 
             PreFlightCheckButton {
-                name:            qsTr("VERIFY")
+                name:            qsTr("VERIFY SETTINGS")
                 manualText:      qsTr("Spirit configuration settings are accurate (see configuration screen)")
             }
 
             PreFlightCheckButton {
-                name:            qsTr("VERIFY")
-                manualText:      qsTr("ONE battery mounted on top")
+                name:            qsTr("CONFIRM BATTERY ON TOP")
+                manualText:      qsTr("At least ONE battery mounted on top")
             }
         }
 
@@ -62,23 +62,23 @@ Item {
             name: qsTr("Mission checklist")
 
             PreFlightCheckButton {
-                name:           qsTr("VERIFY")
+                name:           qsTr("CHECK METEO")
                 manualText:     qsTr("Wind and weather within limits")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("CHECK")
-                manualText:     qsTr("Geofence settings")
+                name:           qsTr("CHECK GEOFENCE")
+                manualText:     qsTr("Correct distance and altitude")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("CHECK")
-                manualText:     qsTr("RTL settings")
+                name:           qsTr("CHECK RTL/FAILSAFES")
+                manualText:     qsTr("")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("CHECK")
-                manualText:     qsTr("Mission waypoints and altitudes set correctly")
+                name:           qsTr("CHECK MISSION")
+                manualText:     qsTr("Waypoints and altitudes set correctly")
             }
 
         }
@@ -88,23 +88,23 @@ Item {
             name: qsTr("Takeoff checklist")
 
             PreFlightCheckButton {
-                name:           qsTr("VERIFY")
-                manualText:     qsTr("LEDS flashing green")
+                name:           qsTr("LEDs FLASH GREEN")
+                manualText:     qsTr("")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("VERIFY")
+                name:           qsTr("VERIFY VEHICLE HEADING")
                 manualText:     qsTr("Reported heading is correct")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("VERIFY")
+                name:           qsTr("VERIFY CONTROLLER BATTERY")
                 manualText:     qsTr("HereLink controller charged")
             }
         
             PreFlightCheckButton {
-                name:           qsTr("CHECK")
-                manualText:     qsTr("Current flight mode")
+                name:           qsTr("CHECK FLIGHT MODE")
+                manualText:     qsTr("Current flight mode set as expected")
             }
 
             PreFlightBatteryCheck {
