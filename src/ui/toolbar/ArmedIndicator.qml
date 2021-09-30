@@ -27,7 +27,7 @@ QGCComboBox {
     font.pointSize:         ScreenTools.mediumFontPointSize
     currentIndex:           -1
     sizeToContents:         true
-    enabled: _checklistCleared
+    enabled: _armed || _checklistCleared
 
     property bool showIndicator: true
 
