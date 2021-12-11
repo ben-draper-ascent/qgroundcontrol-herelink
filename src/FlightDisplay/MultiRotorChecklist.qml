@@ -45,20 +45,6 @@ Item {
         }
 
         PreFlightCheckGroup {
-            name: qsTr("Configuration checklist")
-
-            PreFlightCheckButton {
-                name:            qsTr("SPIRIT SETTINGS")
-                manualText:      qsTr("Spirit configuration settings are accurate (see configuration screen)")
-            }
-
-            PreFlightCheckButton {
-                name:            qsTr("BATTERY ON TOP")
-                manualText:      qsTr("Confirm at least ONE battery mounted on top")
-            }
-        }
-
-        PreFlightCheckGroup {
             name: qsTr("Mission checklist")
 
             PreFlightCheckButton {

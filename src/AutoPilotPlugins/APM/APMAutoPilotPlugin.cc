@@ -74,10 +74,6 @@ const QVariantList& APMAutoPilotPlugin::vehicleComponents(void)
     if (_components.count() == 0 && !_incorrectParameterVersion) {
         if (_vehicle->parameterManager()->parametersReady()) {
 
-            _spiritComponent = new APMSpiritComponent(_vehicle, this);
-            _spiritComponent->setupTriggerSignals();
-            _components.append(QVariant::fromValue((VehicleComponent*)_spiritComponent));
-
             _safetyComponent = new APMSafetyComponent(_vehicle, this);
             _safetyComponent->setupTriggerSignals();
             _components.append(QVariant::fromValue((VehicleComponent*)_safetyComponent));
