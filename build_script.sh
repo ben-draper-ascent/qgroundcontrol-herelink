@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+sudo apt-get update && sudo apt-get install wget curl    speech-dispatcher    libgstreamer-plugins-base1.0-dev     libgstreamer1.0-0:amd64     libgstreamer1.0-dev     libudev-dev android-sdk
+
 
 export GSTREAMER_NAME='arm64'
 export BITNESS='64'
@@ -15,15 +18,14 @@ export CODESIGN=nocodesign
 export SPEC=android-clang
 export CONFIG=installer
 
-sudo apt-get update && sudo apt-get install wget curl    speech-dispatcher    libgstreamer-plugins-base1.0-dev     libgstreamer1.0-0:amd64     libgstreamer1.0-dev     libudev-dev android-sdk
 
 git submodule update --init --recursive
                    
 #rm -rf $SHADOW_BUILD_DIR
  
 # Prepare required dependencies and environmental variables
-sudo $ANDROID_HOME/tools/bin/sdkmanager --uninstall "platforms;android-31" "platforms;android-30" "platforms;android-29" "build-tools;31.0.0" "build-tools;30.0.0"
-sudo $ANDROID_HOME/tools/bin/sdkmanager "build-tools;25.0.3" "platforms;android-29" "platform-tools"
+sudo $ANDROID_HOME/bin/sdkmanager  --sdk_root="/usr/local/lib/android/sdk" --uninstall "platforms;android-31" "platforms;android-30" "platforms;android-29" "build-tools;31.0.0" "build-tools;30.0.0" "build-tools;25.0.3"
+sudo $ANDROID_HOME/bin/sdkmanager  --sdk_root="/usr/local/lib/android/sdk" "build-tools;25.0.3" "platforms;android-29" "platform-tools"
 
 if [ ! -f "/tmp/gstreamer-1.0-android-${GSTREAMER_NAME}-1.14.4.tar.bz2" ]; then
 	wget -N --quiet https://s3-us-west-2.amazonaws.com/qgroundcontrol/dependencies/gstreamer-1.0-android-${GSTREAMER_NAME}-1.14.4.tar.bz2 -O /tmp/gstreamer-1.0-android-${GSTREAMER_NAME}-1.14.4.tar.bz2
@@ -44,6 +46,13 @@ if [ ! -f "/tmp/Qt5.12.6-android_arm64_v8a-min.tar.bz2" ]; then
 	tar jxf /tmp/Qt5.12.6-android_arm64_v8a-min.tar.bz2 -C /tmp 
 fi
 export PATH=/tmp/Qt5.12-android_arm64_v8a/5.12.6/android_arm64_v8a/bin:$PATH
+
+#### All the above should be take care of in docker, namely:
+####  - Install dependencies
+####  - Install java8 and activate it
+####  - Download and unzip gstreamer, android ndk and qt5.12
+####  - Install android sdk and setup android-29 and build tools 25.0.3
+####  - Checkout repository
 
 # Compute version number
 ./tools/update_android_version.sh ${BITNESS} notmaster

@@ -23,3 +23,20 @@ Key Links:
 * [Discussion/Support](https://docs.qgroundcontrol.com/en/Support/Support.html)
 * [Contributing](https://dev.qgroundcontrol.com/en/contribute/)
 * [License](https://github.com/mavlink/qgroundcontrol/blob/master/COPYING.md)
+
+### IMPORTANT NOTES
+
+Get android sdk 
+https://stackoverflow.com/questions/34556884/how-to-install-android-sdk-on-ubuntu
+https://medium.com/@barcelos.ds/install-android-sdk-in-the-ubuntu-20-04-lts-without-android-studio-1b629924d6c5
+
+Locate your Android SDK install. There could be more than one. For example I had:
+- /usr/local/lib/android/sdk
+- /usr/lib/android-sdk
+the later had the wrong toolchain but its path was being added as an env variable, so it made the build fail.
+
+Set right java. The build needs java 8.
+https://docs.datastax.com/en/jdk-install/doc/jdk-install/installOpenJdkDeb.html
+https://computingforgeeks.com/how-to-set-default-java-version-on-ubuntu-debian/
+
+
